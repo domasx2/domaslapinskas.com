@@ -4,7 +4,7 @@ import Physics from "PhysicsJS";
 export default class Asteroid {
 
     //x, y - start coordinates
-    constructor(x, y, radius) {
+    constructor(x, y, radius, mass=1) {
         let vertices = [],
             angle = 0;
 
@@ -15,14 +15,14 @@ export default class Asteroid {
             let vec = new Physics.vector(this.radius, 0);
             vec.rotate(new Physics.transform(null, radians(angle), new Physics.vector(0, 0)));
             vertices.push(vec);
-            angle += rndInt(20, 50);
+            angle += rndInt(20, 70);
         }
 
         this.body = Physics.body('convex-polygon', {
             x,
             y,
             vertices,
-            mass: radius,
+            mass: mass,
             restitution: 1
         });
     }

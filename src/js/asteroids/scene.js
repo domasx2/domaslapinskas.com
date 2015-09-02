@@ -59,8 +59,9 @@ export default class AsteroidsScene {
             vmin = Math.min(viewport.width, viewport.height),
             side = rndInt(0, 3),
             radius = rndInt(vmin * 0.08, vmin * 0.2),
+            mass = (vmin * 0.14) / radius,
             diameter = radius * 2,
-            force = radius * (rndInt(1, 10) / 200),
+            force = (rndInt(1, 10) / 200),
             x, y, fvec;
 
         // left
@@ -91,7 +92,7 @@ export default class AsteroidsScene {
         //rotate force vector at random angle to create random trajectory
         fvec.rotate(new Physics.transform(null, radians(rndInt(-90, 90)), new Physics.vector(0, 0)));
 
-        let asteroid = new Asteroid(x, y, radius);
+        let asteroid = new Asteroid(x, y, radius, mass);
         this.asteroids.add(asteroid);
 
         //aply movement force
