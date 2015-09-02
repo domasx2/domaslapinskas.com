@@ -22,6 +22,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "pixi.js": "^3.0.7"
+    "pixi.js": "^3.0.7",
+    "physicsjs": "git+https://github.com/wellcaffeinated/PhysicsJS.git"
   }
 }
