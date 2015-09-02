@@ -15,7 +15,7 @@ export default class Asteroid {
             let vec = new Physics.vector(this.radius, 0);
             vec.rotate(new Physics.transform(null, radians(angle), new Physics.vector(0, 0)));
             vertices.push(vec);
-            angle += rndInt(20, 60);
+            angle += rndInt(20, 50);
         }
 
         this.body = Physics.body('convex-polygon', {

@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "pixi.js": "^3.0.7",
-    "physicsjs": "git+https://github.com/wellcaffeinated/PhysicsJS.git"
+    "physicsjs": "git+https://github.com/wellcaffeinated/PhysicsJS.git#0.8.0"
   }
 }
