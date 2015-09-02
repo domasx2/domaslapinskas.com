@@ -21,7 +21,9 @@ export default class Asteroid {
         this.body = Physics.body('convex-polygon', {
             x,
             y,
-            vertices
+            vertices,
+            mass: radius,
+            restitution: 1
         });
     }
     

@@ -56,10 +56,11 @@ export default class AsteroidsScene {
     launchAsteroid() {
 
         let viewport = getViewport(),
+            vmin = Math.min(viewport.width, viewport.height),
             side = rndInt(0, 3),
-            radius = rndInt(40, 160),
+            radius = rndInt(vmin * 0.08, vmin * 0.2),
             diameter = radius * 2,
-            force = 0.05,
+            force = radius * (rndInt(1, 10) / 200),
             x, y, fvec;
 
         // left
@@ -92,7 +93,13 @@ export default class AsteroidsScene {
 
         let asteroid = new Asteroid(x, y, radius);
         this.asteroids.add(asteroid);
+
+        //aply movement force
         asteroid.body.applyForce(fvec);
+
+        //apply spin force
+        asteroid.body.applyForce(new Physics.vector(0, Math.random() > 0.5 ? 0.008 : -0.008), new Physics.vector(radius, 0));
+
         this.world.add(asteroid.body);
 
         //add a check if asteroid is outside of visible viewport; if it is, destroy the asteroid
