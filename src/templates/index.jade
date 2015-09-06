@@ -1,16 +1,27 @@
-doctype html
-html(lang="en")
-    head
-        title Domas
-        link(rel="stylesheet", href="style.css")
-    body
-        #asteroids-canvas
-        .content
-            h1 Hello world
+extends _base.jade
 
-        script(src="app.js")
-        script.
-            //insert livereload snippet on localhost TODO: on debug instead
-            if(location.host.split(':')[0] === 'localhost' ) {
-                document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
-            }
+
+block content
+    section#about-me
+        p
+            | Hi! I'm a web developer located in 
+            a(href="https://www.google.lt/search?q=Vilnius") Vilnius
+            |.
+        p
+            | I build 
+            a(href="https://www.pipelinepharma.com") modern web applications
+            |, develop 
+            a(href="https://www.npmjs.com/package/sequelize-fixtures") open source libraries
+            |, tinker with 
+            a(href="http://www.banditracer.eu/") html5 games
+            |.
+        p
+            | Currently I work at 
+            a(href="http://www.producters.com") Producters
+            |, providing solid technical solutions for both startups and established companies.
+        p
+            | I enjoy rock music, sci-fi books and long-winded discussions on interesting topics.
+
+        p
+            | Drop me a line: 
+            a(href="mailto:domasx2@gmail.com") domasx2@gmail.com

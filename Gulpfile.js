@@ -17,7 +17,8 @@ var PATHS = {
     STYL_ALL: 'src/stylesheets/**/*.styl',
     JS: 'src/js/**/*.js',
     JSMAIN: 'src/js/index.js',
-    JADE: ['src/templates/**/*.jade', '!src/templates/**/_*.jade']
+    JADE: ['src/templates/**/*.jade', '!src/templates/**/_*.jade'],
+    JADE_WATCH: ['src/templates/**/*.jade']
 
 };
 
@@ -66,7 +67,7 @@ gulp.task('watch', function () {
     livereload.listen();
     gulp.watch(PATHS.STYL_ALL, ['stylus']);
     gulp.watch(PATHS.JS, ['javascript']);
-    gulp.watch(PATHS.JADE, ['jade']);
+    gulp.watch(PATHS.JADE_WATCH, ['jade']);
 });
 
 gulp.task('serve', serve({

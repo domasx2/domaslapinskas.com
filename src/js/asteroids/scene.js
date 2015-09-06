@@ -45,8 +45,8 @@ export default class AsteroidsScene {
                 // set colors for the circle bodies
                 'convex-polygon' : {
                     strokeStyle: '0xFFFFFF',
-                    lineWidth: 1,
-                    fillStyle: '0xD9D9D9'
+                    lineWidth: 0,
+                    fillStyle: '0xE8E8E8'
                 }
             }
         });
@@ -67,24 +67,24 @@ export default class AsteroidsScene {
         // left
         if (side === 0) {
             y = rndInt(0, viewport.height);
-            x = -radius;
+            x = -diameter;
             fvec = new Physics.vector(force, 0);
 
         //top
         } else if (side === 1) {
-            y = -radius;
+            y = -diameter;
             x = rndInt(0, viewport.width);
             fvec = new Physics.vector(0, force);
 
         //right
         } else if (side === 2) {
             y = rndInt(0, viewport.height);
-            x = viewport.width + radius;
+            x = viewport.width + diameter;
             fvec = new Physics.vector(-force, 0); 
 
         //bottom
         } else {
-            y = viewport.height + radius;
+            y = viewport.height + diameter;
             x = rndInt(0, viewport.width);
             fvec = new Physics.vector(0, -force);
         }
