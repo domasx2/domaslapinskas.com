@@ -1,0 +1,21 @@
+.nav
+    margin-top: 5vh
+    text-align: center
+    
+    li
+        display: inline-block
+        font-size: 30px
+        margin-left: 30px
+        
+        &:first-child
+            margin-left: 0px
+        
+        a
+            color: black
+            
+
+        &.active 
+            font-weight: bold
+            
+            &::before
+                content: ">"

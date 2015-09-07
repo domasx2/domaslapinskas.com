@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     rimraf = require('gulp-rimraf'),
     babelify = require('babelify'),
-    serve = require('gulp-serve');
+    nodemon = require('gulp-nodemon');
 
 
 var NG_MODULE_NAME = 'myapp';
@@ -70,10 +70,13 @@ gulp.task('watch', function () {
     gulp.watch(PATHS.JADE_WATCH, ['jade']);
 });
 
-gulp.task('serve', serve({
-  root: ['dist'],
-  port: 8000
-}));
+gulp.task('serve', function () {
+    nodemon({
+        script: 'server.js',
+        ignore: ['dist/*'],
+        env: { 'NODE_ENV': 'development' }
+    });
+});
 
 gulp.task('build', function (cb) {
     runSequence('clean', ['jade', 'stylus', 'javascript'], cb);

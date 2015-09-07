@@ -1,8 +1,10 @@
 import AsteroidsScene from './asteroids/scene';
-import Physics from "PhysicsJS";
+import Physics from 'PhysicsJS';
+import navigation from './navigation';
 
 document.addEventListener("DOMContentLoaded", function(event) {
 	console.log('loaded');
+    navigation();
     let scene = new AsteroidsScene();
 
     //update world
