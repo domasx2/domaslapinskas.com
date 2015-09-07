@@ -26,7 +26,10 @@
     "babel": "^5.8.23",
     "compression": "^1.5.2",
     "express": "^4.13.3",
+    "express-crawler-snapshots": "^0.3.3",
+    "jade": "^1.11.0",
     "page": "^1.6.3",
+    "pbind": "0.0.1",
     "physicsjs": "git+https://github.com/wellcaffeinated/PhysicsJS.git#0.8.0",
     "pixi.js": "^3.0.7"
   }

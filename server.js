@@ -1,15 +1,24 @@
 import express from 'express';
 import compression from 'compression';
+import snapshots from 'express-crawler-snapshots';
 
 const sections = new Set(['about', 'skills', 'open-source']);
 
 let app = express();
-
+app.set('view engine', 'jade');
 app.use(compression());
 app.use('/', express.static('dist'));
-app.get('/:name', (req, res, next) => {
-    if (sections.has(req.params.name)) {
-        res.sendFile('dist/index.html');
+
+let snapshots_middleware = snapshots({
+    attempts: 2,
+    maxPageLoads: 10,
+    timeout: 10000
+});
+
+app.get('/:page?', snapshots_middleware, (req, res, next) => {
+    let page = req.params.page || 'about';
+    if (sections.has(page)) {
+        res.render('index');
     } else {
         next();
     }

@@ -1,28 +1,37 @@
+import {} from 'pbind';
 import AsteroidsScene from './asteroids/scene';
 import Physics from 'PhysicsJS';
 import navigation from './navigation';
 
-let active = true;
-
-window.addEventListener('focus', function () {
-    active = true;
-});
-
-window.addEventListener('blur', function () {
-    active = false;
-});
-
 document.addEventListener("DOMContentLoaded", function(event) {
 	console.log('loaded');
     navigation();
-    let scene = new AsteroidsScene();
+    let scene, active = true;
 
-    //update world
-    Physics.util.ticker.on(time => {
-        if (scene && active) {
-            scene.step(time);
+    window.addEventListener('focus', function () {
+        active = true;
+        if (scene) {
+            scene.unpause();
         }
     });
+
+    window.addEventListener('blur', function () {
+        active = false;
+        scene.pause();
+    });
+
+    if (!window._phantom) {
+        scene = new AsteroidsScene();
+
+        if (!active) {
+            scene.pause();
+        }
+
+        //update world
+        Physics.util.ticker.on(time => {
+            scene.step(time);
+        });
+    }
 
     window.addEventListener('resize', () => {
         console.log('resize');

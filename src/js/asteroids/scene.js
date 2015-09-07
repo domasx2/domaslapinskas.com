@@ -10,6 +10,7 @@ export default class AsteroidsScene {
     constructor() {
 
         this.asteroids = new Set();
+        this.paused = false;
 
         Physics(world => {
             this.world = world;
@@ -22,14 +23,26 @@ export default class AsteroidsScene {
             this.initRenderer();
 
             this.interval = setInterval(() => {
-                this.launchAsteroid();
-            }, 1000);
+                if (!this.paused) {
+                    this.launchAsteroid();
+                }
+            }, 700);
         });
     }
 
     step(time) {
-        this.world.step(time);
-        this.world.render();
+        if (!this.paused) {
+            this.world.step(time);
+            this.world.render();
+        }
+    }
+
+    pause() {
+        this.paused = true;
+    }
+
+    unpause() {
+        this.paused = false;
     }
 
     destroy () {
@@ -40,7 +53,7 @@ export default class AsteroidsScene {
         this.renderer =  Physics.renderer('pixi', {
             el: 'asteroids-canvas',
             autoResize: true,
-            meta: true, 
+            meta: false, 
             styles: {
                 // set colors for the circle bodies
                 'convex-polygon' : {

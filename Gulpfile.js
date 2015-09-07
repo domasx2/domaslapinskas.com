@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
-    jade = require('gulp-jade'),
     browserify = require('browserify'),
     livereload = require('gulp-livereload'),
     runSequence = require('run-sequence'),
@@ -38,16 +37,6 @@ gulp.task('stylus', function () {
         .pipe(livereload());
 });
 
-
-//compile templates
-gulp.task('jade', function () {
-    return gulp.src(PATHS.JADE)
-        .pipe(jade())
-        .pipe(gulp.dest('dist'))
-        .pipe(livereload());
-}); 
-
-
 //javascript file
 gulp.task('javascript', function () {
 
@@ -67,7 +56,6 @@ gulp.task('watch', function () {
     livereload.listen();
     gulp.watch(PATHS.STYL_ALL, ['stylus']);
     gulp.watch(PATHS.JS, ['javascript']);
-    gulp.watch(PATHS.JADE_WATCH, ['jade']);
 });
 
 gulp.task('serve', function () {
@@ -79,7 +67,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('build', function (cb) {
-    runSequence('clean', ['jade', 'stylus', 'javascript'], cb);
+    runSequence('clean', ['stylus', 'javascript'], cb);
 });
 
 gulp.task('develop', function (cb) {
