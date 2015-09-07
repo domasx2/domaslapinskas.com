@@ -1,26 +1,25 @@
-var express = require('express'),
-    compression = require('compression'),
-    app = express(),
-    sections = ['about', 'skills', 'open-source'];
+import express from 'express';
+import compression from 'compression';
+
+const sections = new Set(['about', 'skills', 'open-source']);
+
+let app = express();
 
 app.use(compression());
 app.use('/', express.static('dist'));
-app.get('/:name', function (req, res, next){
-    if (sections.indexOf(req.params.name) !== -1) {
+app.get('/:name', (req, res, next) => {
+    if (sections.has(req.params.name)) {
         res.sendFile('dist/index.html');
     } else {
         next();
     }
 });
-app.get('/*', function(req, res) {
+app.get('/*', (req, res) => {
     res.status(404).send('Nothing to see here :(');
 });
 
-var port = process.env.NODE_ENV == 'development' ? 8000 : 80;
-
-var server = app.listen(port, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Listening at http://%s:%s', host, port);
+let server = app.listen(process.env.NODE_ENV == 'development' ? 8000 : 80, () => {
+  let address = server.address();
+  console.log(`Listening at http://${address.address}:${address.port}`);
 });
+export default server;

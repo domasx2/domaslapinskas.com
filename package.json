@@ -23,6 +23,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "babel": "^5.8.23",
     "compression": "^1.5.2",
     "express": "^4.13.3",
     "page": "^1.6.3",

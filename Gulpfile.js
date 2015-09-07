@@ -72,7 +72,7 @@ gulp.task('watch', function () {
 
 gulp.task('serve', function () {
     nodemon({
-        script: 'server.js',
+        script: 'index.js',
         ignore: ['dist/*'],
         env: { 'NODE_ENV': 'development' }
     });
