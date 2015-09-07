@@ -3,7 +3,7 @@
     position: relative
     
     padding-top: 5%
-    padding-top: 5vh;
+    padding-top: 5vh
     
     h1, h2
         text-align: center
@@ -25,8 +25,11 @@
         p
             padding: 0.5vh 0
             font-size: 18px
-        
-        &#about
+            
+            @media (max-width: 600px) {
+                font-size: 14px    
+            }
+    
             a
                 color: black
             

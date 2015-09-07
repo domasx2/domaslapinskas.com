@@ -16,8 +16,7 @@ var PATHS = {
     STYL_ALL: 'src/stylesheets/**/*.styl',
     JS: 'src/js/**/*.js',
     JSMAIN: 'src/js/index.js',
-    JADE: ['src/templates/**/*.jade', '!src/templates/**/_*.jade'],
-    JADE_WATCH: ['src/templates/**/*.jade']
+    JADE: 'views/*'
 
 };
 
@@ -39,7 +38,6 @@ gulp.task('stylus', function () {
 
 //javascript file
 gulp.task('javascript', function () {
-
     browserify({entries: PATHS.JSMAIN})
     .transform(babelify)
     .bundle().on('error', function (err) {
@@ -51,11 +49,16 @@ gulp.task('javascript', function () {
     .pipe(livereload());
 });
 
+gulp.task('livereload', function() {
+    livereload.reload();
+});
+
 //watch sources and rebuild
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch(PATHS.STYL_ALL, ['stylus']);
     gulp.watch(PATHS.JS, ['javascript']);
+    gulp.watch(PATHS.JADE, ['livereload']);
 });
 
 gulp.task('serve', function () {
