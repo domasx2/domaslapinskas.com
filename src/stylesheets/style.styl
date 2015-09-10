@@ -1,16 +1,53 @@
+$font_color = #333
+
 *
     margin: 0px
     padding: 0px;
     box-sizing: border-box
-    font-family: 'Source Code Pro', sans-serif;
+    font-family: 'Source Code Pro', sans-serif
+
+p, h1, h2, h3
+    color: $font_color
+    
+p
+    line-height: 150%
 
 html, body
     height: 100%
  
 body
      overflow-x: hidden
+     background-color: white
+     
+.wrap
+    z-index: 2
+    position: relative
+    
+    padding-top: 5%
+    padding-top: 5vh
+    
+    h1, .header-subtitle
+        display: block
+        text-align: center
+    
+    .header-subtitle
+        font-size: 24px
+        font-weight: bold    
+        
+    .social-links
+        text-align: center
+        font-size: 20px
+        
+        a:first-child
+            margin-right: 20px
+
+        i
+            color: black
+            margin-right: 3px
+            
 
 @import "./asteroids"
 @import "./nav"
 @import "./content"
-@import "./skills"
+@import "./resume"
+@import "./oss"

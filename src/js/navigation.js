@@ -20,8 +20,6 @@ function loadPage(section) {
 
 export default function navigation() {
     page('/', () => loadPage('about'));
-    page('/:section', ctx => {
-        loadPage(ctx.params.section);
-    });
+    page('/:section', ctx => loadPage(ctx.params.section));
     page();
 }

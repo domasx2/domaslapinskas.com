@@ -2,7 +2,7 @@ import express from 'express';
 import compression from 'compression';
 import snapshots from 'express-crawler-snapshots';
 
-const sections = new Set(['about', 'skills', 'open-source']);
+const sections = new Set(['about', 'resume', 'open-source']);
 
 let app = express();
 app.set('view engine', 'jade');

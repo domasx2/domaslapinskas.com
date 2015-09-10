@@ -111,7 +111,7 @@ export default class AsteroidsScene {
         //aply movement force
         asteroid.body.applyForce(fvec);
 
-        //apply spin force
+        //apply spin force at an orthogonal off-center vector
         asteroid.body.applyForce(new Physics.vector(0, Math.random() > 0.5 ? 0.008 : -0.008), new Physics.vector(radius, 0));
 
         this.world.add(asteroid.body);

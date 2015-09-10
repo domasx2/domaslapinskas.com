@@ -2,6 +2,10 @@ doctype html
 html(lang="en")
     head
         meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(charset="UTF-8")
+        meta(name="description", content="Domas Lapinskas, web developer")
+        meta(name="keywords", content="Domas Lapinskas,web developer,Vilnius,Lithuania,python,javascript")
+        meta(name="author", content="Domas Lapinskas")
         title Domas
         link(href='https://fonts.googleapis.com/css?family=Source+Code+Pro', rel='stylesheet')
         link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
@@ -10,7 +14,7 @@ html(lang="en")
         #asteroids-canvas
         .wrap
             h1 Domas Lapinskas
-            h2 full stack web developer
+            span.header-subtitle full stack web developer
             p.social-links
                 a(href="https://github.com/domasx2")
                     i.fa.fa-github
@@ -23,16 +27,16 @@ html(lang="en")
                 ul
                     li.nav-about 
                         a(href="/") about
-                    li.nav-skills
-                        a(href="/skills") skills
+                    li.nav-resume
+                        a(href="/resume") resume
                     li.nav-open-source
                         a(href="/open-source") open source
             .content
         script(src="app.js")
         script#tpl-about(type="text/template")
             include ./_about.jade
-        script#tpl-skills(type="text/template")
-            include ./_skills.jade
+        script#tpl-resume(type="text/template")
+            include ./_resume.jade
         script#tpl-open-source(type="text/template")
             include ./_open-source.jade
         script.
