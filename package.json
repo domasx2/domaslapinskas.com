@@ -14,23 +14,27 @@
     "del": "^2.0.0",
     "gulp": "^3.9.0",
     "gulp-express": "^0.3.5",
+    "gulp-if": "^1.2.5",
     "gulp-jade": "^1.1.0",
     "gulp-livereload": "^3.8.0",
     "gulp-nodemon": "^2.0.4",
     "gulp-rimraf": "^0.1.1",
+    "gulp-streamify": "^1.0.2",
     "gulp-stylus": "^2.0.6",
+    "gulp-uglify": "^1.4.1",
+    "page": "^1.6.3",
+    "pbind": "0.0.1",
+    "physicsjs": "git+https://github.com/wellcaffeinated/PhysicsJS.git#0.8.0",
+    "pixi.js": "^3.0.7",
     "run-sequence": "^1.1.2",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "yargs": "^3.24.0"
   },
   "dependencies": {
     "babel": "^5.8.23",
     "compression": "^1.5.2",
     "express": "^4.13.3",
     "express-crawler-snapshots": "^0.3.3",
-    "jade": "^1.11.0",
-    "page": "^1.6.3",
-    "pbind": "0.0.1",
-    "physicsjs": "git+https://github.com/wellcaffeinated/PhysicsJS.git#0.8.0",
-    "pixi.js": "^3.0.7"
+    "jade": "^1.11.0"
   }
 }

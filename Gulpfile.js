@@ -6,10 +6,13 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     rimraf = require('gulp-rimraf'),
     babelify = require('babelify'),
-    nodemon = require('gulp-nodemon');
+    nodemon = require('gulp-nodemon'),
+    uglify = require('gulp-uglify'),
+    gulpif = require('gulp-if'),
+    streamify = require('gulp-streamify'),
+    argv = require('yargs').argv;
 
-
-var NG_MODULE_NAME = 'myapp';
+var isProduction = argv.production !== undefined;
 
 var PATHS = {
     STYL: 'src/stylesheets/style.styl',
@@ -45,6 +48,7 @@ gulp.task('javascript', function () {
         this.emit("end");
     })
     .pipe(source('app.js'))
+    .pipe(gulpif(isProduction, streamify(uglify())))
     .pipe(gulp.dest('./dist/'))
     .pipe(livereload());
 });
