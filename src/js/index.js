@@ -8,7 +8,6 @@ const delta_resize = 60;
 let viewport = getViewport();
 
 document.addEventListener("DOMContentLoaded", function(event) {
-	console.log('loaded');
     navigation();
     let scene, active = true;
 

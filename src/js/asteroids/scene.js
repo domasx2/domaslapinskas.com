@@ -50,9 +50,11 @@ export default class AsteroidsScene {
     }
 
     initRenderer() {
+        let viewport = getViewport();
         this.renderer =  Physics.renderer('pixi', {
             el: 'asteroids-canvas',
-            autoResize: true,
+            width: viewport.width,
+            height: viewport.height,
             meta: false, 
             styles: {
                 // set colors for the circle bodies
@@ -64,17 +66,25 @@ export default class AsteroidsScene {
             }
         });
         this.world.add(this.renderer);
+
+        let pixelRatio = window.devicePixelRatio;
+        if (pixelRatio && pixelRatio > 1) {
+            let canvas = document.querySelector('#asteroids-canvas canvas');
+            canvas.style.transform = 'scale(' + (1 / pixelRatio) +')';
+            canvas.style['-webkit-transform'] = 'scale(' + (1 / pixelRatio) +')';
+        }
     }
 
     launchAsteroid() {
 
         let viewport = getViewport(),
             vmin = Math.min(viewport.width, viewport.height),
+            scale_mod = (vmin / 1080),
             side = rndInt(0, 3),
             radius = rndInt(vmin * 0.08, vmin * 0.2),
             mass = (vmin * 0.14) / radius,
             diameter = radius * 2,
-            force = (rndInt(1, 10) / 200),
+            force = (rndInt(1, 10) / 200) * scale_mod,
             x, y, fvec;
 
         // left
@@ -112,7 +122,7 @@ export default class AsteroidsScene {
         asteroid.body.applyForce(fvec);
 
         //apply spin force at an orthogonal off-center vector
-        asteroid.body.applyForce(new Physics.vector(0, Math.random() > 0.5 ? 0.008 : -0.008), new Physics.vector(radius, 0));
+        asteroid.body.applyForce(new Physics.vector(0, Math.random() > 0.5 ? 0.008 * scale_mod : -0.008 * scale_mod), new Physics.vector(radius, 0));
 
         this.world.add(asteroid.body);
 

@@ -18,7 +18,9 @@ let snapshots_middleware = snapshots({
 app.get('/:page?', snapshots_middleware, (req, res, next) => {
     let page = req.params.page || 'about';
     if (sections.has(page)) {
-        res.render('index');
+        res.render('index', {
+            development: process.env.NODE_ENV == 'development'
+        });
     } else {
         next();
     }
