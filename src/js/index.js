@@ -2,6 +2,10 @@ import {} from 'pbind';
 import AsteroidsScene from './asteroids/scene';
 import Physics from 'PhysicsJS';
 import navigation from './navigation';
+import {getViewport} from './asteroids/utils';
+
+const delta_resize = 60;
+let viewport = getViewport();
 
 document.addEventListener("DOMContentLoaded", function(event) {
 	console.log('loaded');
@@ -34,12 +38,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     window.addEventListener('resize', () => {
-        console.log('resize');
-        scene.destroy();
-        let container = document.getElementById('asteroids-canvas');
-        if (container.childNodes.length) {
-            container.removeChild(container.firstChild);
+        let new_viewport = getViewport();
+
+        if (Math.abs(new_viewport.width - viewport.width) > delta_resize  || Math.abs(new_viewport.height - viewport.height) > delta_resize) {
+            viewport = new_viewport;
+            scene.destroy();
+            let container = document.getElementById('asteroids-canvas');
+            if (container.childNodes.length) {
+                container.removeChild(container.firstChild);
+            }
+            scene = new AsteroidsScene();
         }
-        scene = new AsteroidsScene();
     });
 });
