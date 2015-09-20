@@ -19,7 +19,8 @@ var PATHS = {
     STYL_ALL: 'src/stylesheets/**/*.styl',
     JS: 'src/js/**/*.js',
     JSMAIN: 'src/js/index.js',
-    JADE: 'views/*'
+    JADE: 'views/*',
+    FAVICON: 'src/favicon.png'
 
 };
 
@@ -53,6 +54,12 @@ gulp.task('javascript', function () {
     .pipe(livereload());
 });
 
+gulp.task('favicon', function() {
+    return gulp.src(PATHS.FAVICON)
+    .pipe(gulp.dest('dist/'));
+});
+
+
 gulp.task('livereload', function() {
     livereload.reload();
 });
@@ -74,7 +81,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('build', function (cb) {
-    runSequence('clean', ['stylus', 'javascript'], cb);
+    runSequence('clean', ['stylus', 'favicon', 'javascript'], cb);
 });
 
 gulp.task('develop', function (cb) {
