@@ -41,7 +41,7 @@ gulp.task('stylus', function () {
 
 //javascript file
 gulp.task('javascript', function () {
-    browserify({entries: PATHS.JSMAIN})
+    return browserify({entries: PATHS.JSMAIN})
     .transform(babelify)
     .bundle().on('error', function (err) {
         console.error(err.toString());

@@ -13,6 +13,11 @@ function loadPage(section) {
         }
         activeNav = document.getElementsByClassName(`nav-${section}`)[0];
         activeNav.className = `${activeNav.className} active`;
+        setTimeout(() => {
+            if (window.ga) {
+                ga('send', 'pageview');
+            }
+        }, 1);
     } else {
         page('/');
     }
